@@ -1,0 +1,47 @@
+<div layout="column" layout-fill>
+    <header>
+        <ng-include src="'views/main-toolbar.template.html'"></ng-include>
+    </header>
+
+    <main flex style="overflow-y: auto;" id="div_main_middle">
+        <div class="div_logdata" id="div_main_logdata"></div>
+    </main>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="sidenavleft"
+        md-whiteframe="4">
+
+        <md-toolbar class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Back" ng-click="toggleSidenav($event)">
+                <md-icon md-svg-icon="theme/images/arrow_back.svg"></md-icon>
+            </md-button>
+        </md-toolbar>
+        <md-content>
+            <md-menu-item ng-if="currentUser">
+                <md-button ng-click="viewProfile()">
+                    <md-icon md-svg-icon="theme/images/account_circle.svg"></md-icon>
+                    Profile...
+                </md-button>
+            </md-menu-item>
+            <md-menu-item ng-if="!currentUser">
+                <md-button ng-click="toggleSidenav(); login($event);">
+                    <md-icon md-svg-icon="theme/images/input.svg" md-menu-align-target></md-icon>
+                    Log in
+                </md-button>
+            </md-menu-item>
+            <md-menu-item ng-if="currentUser">
+                <md-button ng-click="toggleSidenav(); logoff();">
+                    <md-icon md-svg-icon="theme/images/input.svg"></md-icon>
+                    Log out
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-item>
+                <md-button ng-click="viewSettings()">
+                    <md-icon md-svg-icon="theme/images/settings.svg"></md-icon>
+                    Settings...
+                </md-button>
+            </md-menu-item>
+        </md-content>
+
+    </md-sidenav>
+</div>
